@@ -162,8 +162,85 @@ All of the logical functions above only work with single bit operands ie. 1 or 0
 
 Logical functions on the 80x86 operate on a _bit-by-bit_ or _bitwise_ basis.
 
-Due to the reason above, it's easier to convert octal and hexadecimal numbers to binary before performing logical operations.
+iDue to the reason above, it's easier to convert octal and hexadecimal numbers to binary before performing logical operations.
 
-Using the logical AND, OR, and XOR operations to manipulate bit strings is known as _masking_ bit strings.
+Masking: Using the logical AND, OR, and XOR operations to manipulate bit strings.
 
 ### 1.7 Signed and Unsigned Numbers
+
+With _n_ bits we can represent the signed values in the range of -2^(n-1) to +2^(n-1)-1.
+
+Two's compliment: 
+- The highest order bit is the _sign bit_.
+- If the sign bit is 0, the number is positive.
+- If the sign bit is 1, the number is negative.
+
+How to convert positive to negative:
+1. Invert all bits (logical NOT)
+2. Add one to the inverted result.
+
+The 80x86 microprocessor provides an instruction **_NEG_** (negate) which performs two's compliment operation.
+
+### 1.8 Sign and Zero Extension
+
+Two's compliment integers have a fixed length so a problem arises when trying to convert say, an 8 bit integer to 16 bits, and vice versa.
+
+**Sign Extension**: Converting to a larger bit value.
+
+**Contraction**: Converting to a smaller bit value.
+
+**Zero Extension**: Converting small unsigned values to larger unsigned values.
+
+### 1.9 Shifts and Rotates
+
+_Shift_ and _rotate_ operations are another set of logical operations that can be applied to bit strings.
+
+- Left shift
+- Right shift
+	- Right arithmetic shift
+- Left rotate
+- Right rotate
+
+#### Shift Left
+
+- Zero gets shifted into the L.O. bit.
+- The previous value of bit 7 will be the _carry_.
+
+This is the same thing as multiplying it by it's radix.
+
+More generally, if you shift a value left _n_ times, you multiply that value by 2^n.
+
+#### Shift Right
+
+Similarily, if you shift a value right _n_ times, you divide that value by 2^n.
+
+However, when dealing with signed numbers, you have to use an _arithmetic shift right_.
+
+##### Arithmetic Shift Right
+
+Same as a regular shift right, except we leave bit seven alone.
+
+This operation always rounds the numbers to the closest integer _which is less than or equal to the actual result_.
+
+#### Rotates
+
+The same as shifts, except the bit that gets shifted out gets placed back at the other end.
+
+### 1.10 Bit Fields and Packed Data
+
+Packed data is effecient in terms of memory usage, but computationally inefficient.
+
+### 1.11 The ASCII Character Set
+
+Divided into 4 groups of 32 characters.
+
+The only difference between uppercase and lowercase characters is bit 5. Uppercase always has a zero in bit 5. Lowercase always have a one in bit 5.
+
+Bits 5 and 6 determine which of the four groups of ASCII character set you're in:
+
+| Bit 6 | Bit 5 | Group |
+| --- | --- | --- |
+| 0 | 0 | Control Characters |
+| 0 | 1 | Digits & Punctuation |
+| 1 | 0 | Upper Case & Special |
+| 1 | 1 | Lower Case & Special |
