@@ -162,7 +162,7 @@ All of the logical functions above only work with single bit operands ie. 1 or 0
 
 Logical functions on the 80x86 operate on a _bit-by-bit_ or _bitwise_ basis.
 
-iDue to the reason above, it's easier to convert octal and hexadecimal numbers to binary before performing logical operations.
+Due to the reason above, it's easier to convert octal and hexadecimal numbers to binary before performing logical operations.
 
 Masking: Using the logical AND, OR, and XOR operations to manipulate bit strings.
 
