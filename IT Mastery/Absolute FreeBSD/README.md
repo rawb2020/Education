@@ -66,6 +66,18 @@ The -f flag is also used to specify a name for the tarball:
 $ tar -cf books.tar /home/rawb2020/books
 ```
 
-#### Compression
+##### Compression
+
+| Compression Type | Flag | File Extension |
+| --- | --- | --- |
+| XZ | -J | .txz |
+| bzip | -j | .tbz |
+| gzip | -z | .tar.gz, .tgz, .taz |
+
+##### Permission Restore
+
+The -p flag restores original permissions. Use this for system restores.
+
+## Chapter 6: Kernel
 
 
