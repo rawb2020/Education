@@ -36,4 +36,36 @@ No Notes.
 
 FreeBSD stores boot messages in /var/run/dmesg.boot
 
+## Chapter 5: Backup and Recovery
+
+You can use tar(1) for backing up your system.
+
+Tarsnap is a network-based backup tool.
+
+#### Create an Archive
+
+The following command backs up everything from the root directory to $TAPE (or /dev/sa0 if $TAPE isn't set):
+
+```
+$ tar -c /
+```
+
+Note: Be careful when backing up with a leading / as when you extract the contents from a tarball, they will always be restored relative to the root directory. If you leave out the leading /, you can restore the file anywheres you want.
+
+##### Non-default Storage
+
+Instead of writing to $TAPE (or /dev/sa0), you can specify a location with the -f flag:
+
+```
+$ tar -c -f /dev/ssd0 /
+```
+
+The -f flag is also used to specify a name for the tarball:
+
+```
+$ tar -cf books.tar /home/rawb2020/books
+```
+
+#### Compression
+
 
